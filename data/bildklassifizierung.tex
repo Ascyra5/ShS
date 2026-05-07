@@ -1,92 +1,195 @@
+
 \chapter{Bildklassifizierung}
 
     \section{Konzept und Einordnung}
-    Gymnasien haben (der Theorie nach) die Aufgabe, Schüler insofern auszubilden, dass sie die Fähigkeit besitzen, eine Universität besuchen zu können.
-    Gerade hierfür ist es wichtig, Mathematik nicht nur als Aneinanderreihung von Formeln oder (im Schlimmsten Fall) auswendig gelernten Sätzen zu verstehen, sondern als das, was es ist:
-    Ein Werkzeug, oder eine hochpräzise Sprache, um Probleme zu lösen, oder gar erst präzise formulieren zu können.
-    Der Fokus sollte also nicht nur auf dem Ansammeln verschiedener Werkzeuge liegen, sondern sie sollte auch sinnvoll eingesetzt werden können.
-    Aufgrund der zunehmenden Nutzung von KI in sämtlichen (technischen) Bereichen, ist daher die Anwendung der gelernte mathematischen Inhalte auf KI-bezogene Themengebiete naheliegend.
+    Gymnasien haben die Aufgabe, Schüler so auszubilden, dass sie die Fähigkeit besitzen, eine Universität besuchen zu können. Gerade hierfür ist es wichtig, Mathematik nicht nur als Aneinanderreihung von Formeln oder als auswendig gelernten Sätzen zu verstehen, sondern als ein Werkzeug, oder eine präzise Sprache, um Probleme formulieren und lösen zu können. Das beinhaltet verschiedene Werkzeuge beherrschen, sich je nach Kontext für eines zu entscheiden und dieses sinnvoll eingesetzen zu können.
+    Aufgrund der zunehmenden Nutzung von KI, ist daher die Anwendung der gelernte mathematischen Inhalte auf KI-bezogene Themengebiete naheliegend.
     In diesem Workshop schauen wir uns den Teilbereich Maschinelles Lernen (supervised learning) an, und versuchen simple, aber realistische Probleme mithilfe mathematischer Methoden zu lösen.
 
     \section{Workshop: Bildklassifizierung}
-        In diesem Workshop geht es darum in kleinen Schritten zu verstehen, wie  man anhand maschinellen Lernens  realisieren kann, bestimmte Klassen von Objekten bzw. Bilder zu unterscheiden.
+        In dem Workshop "Bildklassifizierung" geht es darum in kleinen Schritten zu verstehen, wie ein Computer maschinellem Lernen mit  bestimmte Klassen von Objekten oder Bilder zu unterscheiden kann.
         \subsection{Blatt1}
-            Als Einstiegsbeispiel wird eine zweifarbige Ampel verwendet, die entweder grün oder rot leuchten kann. In diesem Zuge wird die digitale Farbgebung (RGB) eingeführt, um die Farbgebung der Ampel in Zahlen zu übersetzen.
-            Um das Problem im Anschluss noch weiter zu reduzieren, wird die Ampel  als ein Schwarz-Weiß-Bild dargestellt, in dem lediglich der ebenfalls neu eingeführte Grauwert eine Rolle spielen, sodass die Ampel als ein zwei dimensionaler Vektor $\vec{x}=[x_1, x_2] \in \mathbb{R}_+^2$ modelliert werden kann.
+            Als Einstiegsbeispiel wird eine Ampel mit zwei Lichtern verwendet, die entweder grün oder rot leuchten kann. In diesem Zuge wird die digitale Farbgebung (RGB) eingeführt, um die Farbgebung der Ampel in Zahlen zu übersetzen. Auf dem Arbeitsblatt wird die Ampel vereinfacht als zwei übereinanderliegende Quadrate ausgegeben.
+            Um das Problem weiter zu reduzieren, wird die Ampel  als ein Schwarz-Weiß-Bild dargestellt. Zu diesem Zweck sollen die Schüler sich selbst über die Formel für die Umrechnung von RGB in den Grauwert informieren. Die Ampel wird nun als ein zwei dimensionaler Vektor $\vec{x}=[x_1, x_2] \in \mathbb{R}_+^2$ modelliert.
             Der $x_1$-Wert gibt den Grauwert der oberen Hälfte der Ampel und der $x_2$-Wert den Grauwert der unteren Hälfte der Ampel an.
             Das Grundproblem, welches nun gelöst werden muss, besteht darin, wie man nun die Werte von $x_1$ und $x_2$ so unterteilen bzw. klassifizieren kann, dass eine Unterscheidung zwischen Rot und Grün (bzw. den entsprechenden Grauwerten) möglich ist.
             Hierzu wird die Idee der linearen Klassifikation eingeführt, bei der eine Gerade als Entscheidungsgrenze zwischen den beiden Klassen (Grauwert rotes Licht, Grauwert grünes Licht) dient.
-            Zunächst wird für gegebene Geraden diskutiert, welche Gerade die bestmögliche Trennung der beiden Klassen ermöglicht, um im Anschluss dann präziser zu formulieren, was eine Trenngerade für Eigenschaften haben muss.
+            Zunächst sollen die Schüler zwischen drei gegebenen Geraden entsscheiden, welche die bestmögliche Trennung der beiden Klassen ermöglicht. Dann sollen sie präziser formulieren, welche Eigenschaften eine Trenngerade haben muss.
         \subsection{Blatt 2}
-            Nach der intuitiven Formulierung, was die beste Trenngerade ausmacht, soll das Problem nun mathematisch präzise formuliert werden, um es schließlich mit einem Algorithmus lösen zu können.
-            Hierzu wird die vektorielle Normalenform einer Gerade eingeführt/wiederholt, sowie die vektorielle Abstandsberechnung um schließlich das Aufstellen der Trenngerade als Lösung eines doppeltes Optimierungsproblems zu formulieren, bei dem der der minimale Abstand der Punkte eines Datensatzes zu einer Gerade maximiert werden soll. 
+            Nach der intuitiven Entscheidung für die beste Trenngerade und eine selbst formulierte Begründung dafür, sollen die Schüler das Problem nun mathematisch präzise formulieren. Damit es mit einem Algorithmus gelöst werden kann.
+            Hierzu wird die vektorielle Normalenform einer Gerade eingeführt/wiederholt, sowie die vektorielle Abstandsberechnung um schließlich das Aufstellen der Trenngerade als Lösung eines doppeltes Optimierungsproblems zu formulieren, bei dem der der minimale Abstand der Punkte eines Datensatzes zu einer Gerade maximiert werden soll.
         \subsection{Blatt 3}
-            Nachdem das Grundproblem und eine erste mathematische Formulierung in Blatt 1 und Blatt 2 erarbeitet wurden, wird die Methode nun ins dreidimensionale erweitert, in dem die Ampel nun auch eine Gelbphase besitzt, sodass die Bilder nun als dreidimensionale Vektoren $\vec{x}=[x_1, x_2, x_3] \in \mathbb{R}_+^3$ modelliert werden können.
+            Nachdem das Grundproblem und eine erste mathematische Formulierung in Blatt 1 und Blatt 2 erarbeitet wurden, wird die Methode nun ins dreidimensionale erweitert. Das Modell nähert sich stäker der Realität. Die Ampel besitzt nun eine Gelbphase, sodass die Bilder nun als dreidimensionale Vektoren $\vec{x}=[x_1, x_2, x_3] \in \mathbb{R}_+^3$ modelliert werden können.
             Es reicht nun nichtmehr, die Klassen durch eine Gerade zu trennen, sondern es muss eine Ebene als Entscheidungsgrenze gefunden werden, um die drei Klassen (Rot, Gelb, Grün) voneinander zu unterscheiden.
-            Dazu wird anknüpfend die Normalenform der Ebene eingeführt/wiederholt, und damit das analoge doppelte Optimierungsproblem im dreidimensionalem Raum formuliert, um die optimale Trennebene zu finden.
+            Dazu benötig man die Normalenform der Ebene. Mit der Normalenform wird das zu dem auf Blatt 2 aufgestellten, analoge doppelte Optimierungsproblem im dreidimensionalem Raum formuliert, um die optimale Trennebene zu finden.
         \section{Blatt 4}
-            Um die Bildklassifizierung nicht nur auf Farberkennung zu reduzieren, wird auf diesem Blatt noch ein weiterer Aspekt besprochen, die Auflösung.
-            Hier wird der Einfluss der Länge eines Vektors diskutiert, und wie es die Qualität und Berechnungszeit beeinflusst.
-        \subsection{Blatt 5}    
-            Mit diesen Grundlagen können sich die Schüler nun aussuchen, ob die die gelernten Methoden der Bildklassifizierung einmal auf Schrifterkennung oder auf die Gesichtserkennung anwenden wollen. 
-            
-        
+            Um die Bildklassifizierung nicht nur auf Farberkennung zu reduzieren, wird auf diesem Blatt noch ein weiterer Aspekt besprochen, die Auflösung. Dadurch wird aufgezeigt, dass das Optimierungsproblem auch auf deutlich höhere Dimensionen übertragbar ist.
+            Hier wird der Einfluss der Länge eines Vektors diskutiert, und wie es die Bildqualität und Berechnungszeit beeinflusst.
+        \subsection{Blatt 5}
+            Mit diesen Grundlagen können sich die Schüler nun aussuchen, ob die die gelernten Methoden der Bildklassifizierung auf Schrifterkennung oder auf die Gesichtserkennung anwenden wollen. Hier sollen die Schüler das Grundkonzept von maschinellem Lernen wiederholen. Sie sollen die Reihnfolge von der Schritte zur Entwicklung eines Klassifizierungsmodells angeben. Zentrales Lernziel des letzten Arbeitsblattes ist es zu erkennen wie wichtig es ist Trainings- und Testdaten voneinander zutrennen. Bei beiden Versionen des Blattes traineren die Schüler die Maschine zunächst mit Trainingsdaten und können sie dann testen.
+             Um zu bewerten, wie gut der Computer zwischen Kategorien unterscheiden kann, wird die Konfusionsmatrix eingeführt. Sie zeigt an, welche Fehler wie oft auftreten. Man kann also erkennen, wo Verbesserungspotential besteht. Der Workshop schließt mit Fragen zur Reflexion, welche über die Mathematik hinausgehen. Damit wird deutlich welche Relevanz Mathematik im Alltag hat und die Schüler werden dazu angehalten technischen Fortschritt ethisch zu bewerten.
+
+
 
     \section{Kompetenzen}
         \subsection{Inhaltliche Kompetenzen}
-            Die Schüler sollten bestenfalls bereits die Grundlagen von Vektoren, Geraden und Ebenen gelernt haben, sowie das Rechnen mit Vektoren verstanden haben. 
-            Mithilfe dieser Grundlagen lernen die Schüler die Möglichkeit eine Gerade in der Normalenform zu schreiben, was später den Weg zur Normalenform der Ebene erleichtert. In der Schule hat man letztere vielleicht eher gesehen, als die Normalenform der Gerade.
-            Zudem wiederholen oder lernen die Schüler wie man mithilfe dieser Darstellung auf geschicktem (später für die Numreik sinnnvollem) Weg Abstände von Punkten zu Geraden oder Ebenen berechnet. \\
+            Voraussetzung für den Worshop sind ein Grundverständnis von von Vektoren, Geraden und Ebenen, sowie das Rechnen mit Vektoren.
+            Mithilfe dieser Grundlagen lernen die Schüler die Möglichkeit eine Gerade in der Normalenform zu schreiben, was später den Weg zur Normalenform der Ebene erleichtert.
+            Zudem wiederholen oder lernen die Schüler wie man mithilfe dieser Darstellung auf geschicktem (später für die Numerik sinnnvollem) Weg Abstände von Punkten zu Geraden oder Ebenen berechnet.  \\
 
         \minisec{Bildungsplan}
-            Da die Unterrichtseinheit das Arbeiten mit Vektoren, Ebenen, und vektoriellem Abstand beinhaltet, sollte diese erst in der 11. Klasse durchgeführt werden, da die Schüler hier bereits mit diesen Themen vertraut sind, und sie somit nicht mehr neu eingeführt werden müssen, sondern direkt auf das Problem der Bildklassifizierung angewendet werden können.
-            Ohne die Erweiterung in den dreidimensionalen Raum könnte die Unterrichtseinheit auch bereits in der 10. Klasse durchgeführt werden, da man ohne die Erweiterung nicht auf eine Trennebene sondern lediglich eine Trenngrade angewiesen ist. 
+            Da die Unterrichtseinheit das Arbeiten mit Vektoren, Ebenen, und vektoriellem Abstand beinhaltet, sollte diese erst nach der dazugehörigen Unterrichtseinheit in der 10. Klasse oder in der 11. Klasse durchgeführt werden. Die Schüler sollten mit diesen Themen vertraut sein, damit sie sich auf das Problem der Bildklassifizierung konzentrieren können.
         \subsection{Prozessbezogene Kompetenzen}
        Ein essenzieller Bestandteil der Naturwissenschaft ist der Prozess des Modellierungskreislaufs. Jedes physikalische Modell entsteht aus einer Vereinfachung eines realen Problems, welches dann mathematisch formuliert, und in diesem Formalismus (näherungsweise) gelöst werden kann.
        In der Schule wird leider selten die Möglichkeit geboten, den vollständigen Kreislauf durchzugehen. Sehr häufig wird bereits das mathematische Modell vorgegeben, welches dann \glqq{}nur\grqq{} gelöst und interpretiert werden muss.
-       Auch hier kann (alleine aus zeitlichen Gründen) der Kreislauf nicht in aller Vollständigkeit entdeckend durchlaufen werden, allerdings leitet der Workshop die Schüler so durch den Modellierungskreislauf, dass sie zumindest jedem Schritt mindestens einmal begegnen. \\
+       Auch hier kann (alleine aus zeitlichen Gründen) der Kreislauf nicht in aller Vollständigkeit entdeckend durchlaufen werden, allerdings leitet der Workshop die Schüler so durch den Modellierungskreislauf, dass sie jedem Schritt mindestens einmal begegnen. \\
         \minisec{Reales Problem}
-            Das reale Problem, die Bildklassifizierung, wird vorgegeben, die Schüler müssen sich aber  selbst das geeignete Zusatzinformationen beschaffen, um die anschließende Vereinfachung des realen Problems zu verstehen bzw. nachvollziehen zu können.
+            Das reale Problem, die Bildklassifizierung, wird vorgegeben - die Schüler müssen sich selbst geeignete Zusatzinformationen beschaffen, um die anschließende Vereinfachung des realen Problems zu verstehen.
         \minisec{Vereinfachung}
-            Der Weg der Vereinfachung ist hier ebenfalls vorgegeben, diesen müssen die Schüler nicht selbstständig entdecken, allerdings nachvollziehen. %Dafür war es notwendig, dass sie zunächst das weniger vereinfachte Problem verstehen, in dem die Ampel mithilfe von RGB-Farben dargestellt wird, um dann die Vereinfachung zu verstehen, in der die Ampel nur noch als Schwarz-Weiß-Bild dargestellt wird.
-            Dadurch, dass das reale Problem zunächst mithilfe von RGB-Farben mit je drei Werten beschrieben wurde, können die Schüler besser nachvollziehen, warum man das Problem noch einmal weiter auf den Grauwert reduzieren kann, um es schließlich als zweidimensionales Problem zu formulieren.
+            Der Weg der Vereinfachung ist hier ebenfalls vorgegeben, diesen müssen die Schüler nicht selbstständig entdecken, allerdings nachvollziehen. Dafür ist es notwendig, dass sie zunächst das weniger vereinfachte Problem verstehen, in dem die Ampel mithilfe von RGB-Farben dargestellt wird, um dann die Vereinfachung zu verstehen, in der die Ampel nur noch als Schwarz-Weiß-Bild dargestellt wird.
+            Mit der Reduktion auf zwei Vektoren, die den Grauwert angeben, kann es als zweidimensionales Problem formuliert werden.
             \minisec{Mathemtisches Modell}
-            Auch das mathematische Modell der vektoriellen Beschreibung des Problems wird vorgegeben, allerdings können die Schüler durch das Schrittweise vorgehen den Übergang vom inhaltlichen Problem zum mathematischen Modell nachvollziehen, und verstehen, wie die einzelnen Schritte des Modells mit den inhaltlichen Aspekten des Problems zusammenhängen. Im zweiten Schritt können die gelernten Methoden auf eine höhere dimension übertragen werden.
+            Auch das mathematische Modell der vektoriellen Beschreibung des Problems wird vorgegeben, allerdings können die Schüler durch das Schrittweise vorgehen den Übergang vom inhaltlichen Problem zum mathematischen Modell nachvollziehen, und verstehen, wie die einzelnen Schritte des Modells mit den inhaltlichen Aspekten des Problems zusammenhängen. Im zweiten Schritt können die gelernten Methoden auf eine höhere Dimension übertragen werden.
         \minisec{Mathematische Lösung}
-            Die mathematische Lösung des Problems der Bildklassifizierung wird schrittweise erarbeitet, in dem die Schüler durchs argumentieren und diskutieren die Eigenschaften einer Trenngerade bzw. Trennebene herausarbeiten, um schließlich die mathematische Formulierung des Problems als doppeltes Optimierungsproblem zu verstehen, und damit die mathematische Lösung zu formulieren. Auch das mathematische Lösungsverfahren des erweiterten höher dimensionalen Optimierungproblems kann analog zum zweidimensionalen Problem erlernt werden. 
+            Die mathematische Lösung des Problems der Bildklassifizierung wird schrittweise erarbeitet, in dem die Schüler durchs argumentieren und diskutieren die Eigenschaften einer Trenngerade bzw. Trennebene herausarbeiten, um schließlich die mathematische Formulierung des Problems als doppeltes Optimierungsproblem zu verstehen, und damit die mathematische Lösung zu formulieren. Auch das mathematische Lösungsverfahren des erweiterten höher dimensionalen Optimierungproblems kann analog zum zweidimensionalen Problem erlernt werden.
         \minisec{Interpretation}
-            Die Interpretation wird durch vorgegebene Lösungen geübt, in dem die  Schüler durch die Vorgabe bestimmter Trenngeraden-, oder Ebenen einen Datensatz richtig klassifizieren müssen.\\
+            Die Interpretation wird durch vorgegebene Lösungen geübt, in dem die Schüler durch die Vorgabe bestimmter Trenngeraden oder -ebenen einen Datensatz richtig klassifizieren müssen.\\
             \par
-       Zusätzlich lernen die Schüler durch die immer wieder auftauchenden Zwischenfragen und abschließenden Diskussionen begründete Hypothesenbildung.
-       Das bedeutet, sie lernen sich begründet Gedanken zu einer Formulierung, einer Vereinfachung oder einer Begründung zu machen, und müssen diese eigens begründen. 
+       Zusätzlich üben die Schüler durch die verschiedenen Zwischenfragen und abschließenden Diskussionen begründete Hypothesenbildung.
+       Sie sollen sich begründet Gedanken zu einer Formulierung, einer Vereinfachung oder einer Begründung machen, und müssen diese selbst begründen.
        Im Anschluss haben sie zusätzlich die Möglichkeit ihre eigenen (aber auch andere) Hypothesen auf ihre Gültigkeit zu prüfen, sodass nicht nur die Hypothesenbildung sondern gleichzeitig auch die Hypothesenprüfung geübt wird.
 
-    \section{Design Prinzipien}
-        \subsection{DP2: Externe und interne mathematische Bezüge}
-            Externe mathematische Bezüge entstehen in diesem Modul durch die mathematische Modellbildung, also durch die Übersetzung des (vereinfachten) realen Problems der Bilderkennung in eine geeignete mathematische Darstellung.
-            In AB1, Ab2 und AB3 werden visuelle Informationen (Farben bzw. Grauwerte) durch eine Reduktion auf Zahlenwerte mithilfe von Vektoren dargestellt.
-            Interne mathematische Bezüge entstehen bei der Entwicklung einer mathematischen Lösung des übersetzten realen Problems, beim Aufstellen von Trenngeraden oder Ebenen, sowie der Abstandsbestimmung mithilfe von Vektoren.
-            Auch das Konzept der Optimierung, welches die Schüler vielleicht eher aus der Analysis kennen stellt einen internen mathematischen  Bezug dar.
-        \subsection{DP3: Geeignete technische Werkzeuge}
-            Alle Arbeitsblätter waren als ein interaktives Jupyter Notebook gestaltet. 
-        \subsection{DP6: Innere Differenzierung}
-            AB1 hat die Grundlagen des Themas gelegt. Jeder Schüler ann das Blatt in seinem Tempo bearbeiten, allerdings war dieses noch nicht gezielt darauf ausgelegt, verschiedene Schwiereigkeitsgrade zu ermöglichen.
-            Erst ab Blatt 2, bei dem die Grundlagen schon zum Teil Anwendung gefunden haben, gab es die Möglicgkeit für schnelle Schüler sich als Zusatzaufgabe vertieft in die numerische Formulierung des mathematischen Problems zu vertiefen.
-            Ab AB4 können die Schüler frei wählen, ob sie die gelernten Methoden auf die Schrifterkennung oder die Gesichtserkennung anwenden wollen, was ebenfalls eine Form der inneren Differenzierung darstellt, da die Schüler hier je nach Interesse und Vorwissen sich für eine der beiden Möglichkeiten entscheiden können.
-        \subsection{Modellierungskreislauf als metakognitives Element}
-            Wie bereits ausgeführt, liegt dem Workshop der Modellierungskreislauf zugrunde, da es im Groben darum geht, das reale Problem der Bilderkennung so zu vereinfachen, dass eine mathematische Formulierung und im Anschluss auch eine mathematische Lösung möglich ist.
-            Die Schüler werden in kleinen Schritten durch den kreislauf (mehfach) geführt, allerdings kann es sein, dass die Schüler zwar die einzelnen Schritte an sich verstehen, vielleicht aber das Big Picture des gesamten Kreislaufes aus den Augen verlieren.
-
-    \section{Lob und Kritik}
-        Der Workshop ist sehr gut, um den Schülern auf sehr praxisnahe Weise naturwissenschaftliches Arbeiten nachhaltig zu vermitteln.
-        Dadurch, dass nicht nur ein erklärender Frontalunterricht stattfindet, sondern die Schüler durch interaktive Aufgaben sich ein Themengebiet mehr oder weniger selber erarbeiten, fördert das nicht nur das inhaltliche sondern auch das methodische Verständnis.
-        Die zusätzlichen Aufgaben, die nach Vermutungen, vorläufigen Formulierungen eines Sachverhalts oder einer konkreten Hypothese fragen, sind ebenfalls in dem Sinne gut gestaltete, dass sie das eigenständige Denken und nicht nur reproduzieren des Schülers fordern.
-        Zudem fällt es positiv auf, dass nach eingabe nicht (immer) direkt eine Musterlösung oder eine Richtig/Falsch Meldung erscheint. 
-        Das senkt aus Schülersicht die Hemmschwelle eine Vermutung zu äußern, da diese erst einmal wertungsfrei bleibt, und der Schüler in diesem Fall meist die Möglichkeit hat, im Verlauf des Workshops selber rauzufinden, ob er mit seiner Vermutung richtig lag, oder nicht.
+ \section{Lob und Kritik}
+        Der Workshop ist sehr gut, um den Schülern auf praxisnahe Weise naturwissenschaftliches Arbeiten nachhaltig zu vermitteln.
+        Dadurch, dass nicht nur ein erklärender Frontalunterricht stattfindet, sondern die Schüler durch interaktive Aufgaben sich ein Themengebiet mehr oder weniger selber erarbeiten, fördert das nicht nur das inhaltliche sondern auch das methodische Verständnis und das selbstständige Arbeiten.
+        Die Aufgaben, die nach Vermutungen, vorläufigen Formulierungen eines Sachverhalts oder einer konkreten Hypothese fragen, regen zum eigenständige Denken an.
+        Besonders hervorzuheben ist, dass nach Eingabe nicht immer direkt eine Musterlösung oder eine Richtig/Falsch Meldung erscheint.
+        Das senkt aus Schülersicht die Hemmschwelle eine Vermutung zu äußern, da diese erst einmal wertungsfrei bleibt. Der Schüler hat in diesem Fall meist die Möglichkeit, im Verlauf des Workshops selbst herauzufinden, ob er mit seiner Vermutung richtig lag, oder nicht.
 
         \par
-        
-        Ein kleiner Verbesserungsvorschlag ist die Farbgebung der Vektoren auf AB3 bei der Erklärung. Hier haben die Vektoren andere Farben, als in der anschließenden Erklärung. Für eine bessere Übersicht könnte man dies noch angleichen.
-        
+
+        Ein Verbesserungsvorschlag ist die Farbgebung der Vektoren auf AB3 bei der Erklärung. Hier haben die Vektoren andere Farben, als in der anschließenden Erklärung. Für eine bessere Übersicht könnte man dies noch angleichen.
+
+    \section{Potentielle Schwierigkeiten}
+    Eine Schwierigkeit könnte darin bestehen, dass auf AB2 sowohl die Normalenform einer Geraden eingeführt wird als auch das doppelte Opptimierungsproblem formuliert wird. Die Normalenform dürfte wegen der Verwendung des Skalarprodukts und des Kosinus für einige Schüler schwierig sein. Das Skalarprodukt sollte den Schülern zwar schon bekannt sein - ist bei einem Workshop in der 11. Klasse allerdings aus Schülerperspektive noch relativ neu. Das kann zum einen dazu führen, dass einige es noch nicht sicher beherrschen, andererseits könnte es abschreckend wirken. Der Kosinus wirkt auf einige Schüler enebfalls befremdlich und eine Formel, die den Kosinus enthält, könnte als sehr kompliziert wahrgenommen werden.
+    Die Fallunterscheidung auf AB3 könnte ebenfalls herausfordernd sein, da Schüler Schwierigkeiten haben könnten zu verstehen, was $\vec{x}-\vec{p}$ bedeuten soll. %𝑥⃗ −𝑝⃗ bedeuten soll.
+    Die Konfussionsmatrix auf AB5 könnte für Verwirrung sorgen, da man aus der Matrix selbst herauslesen muss, wie sie funktioniert und zu interpretieren ist.
+
+    \section{Design Prinzipien}
+       \subsection{DP2: Externe und interne mathematische Bezüge}
+            Externe mathematische Bezüge entstehen in diesem Modul durch die mathematische Modellbildung, also durch die Übersetzung des vereinfachten, realen Problems der Bilderkennung in eine geeignete mathematische Darstellung.
+            In AB1, Ab2 und AB3 werden visuelle Informationen (Farben bzw. Grauwerte) durch eine Reduktion auf Zahlenwerte mithilfe von Vektoren dargestellt.
+            Interne mathematische Bezüge entstehen bei der Entwicklung einer mathematischen Lösung des übersetzten realen Problems, beim Aufstellen von Trenngeraden oder Ebenen, sowie der Abstandsbestimmung mithilfe von Vektoren.
+            Auch das Konzept der Optimierung, welches die Schüler aus der Analysis kennen, stellt einen internen mathematischen Bezug dar.
+        \subsection{DP 4: Geeignete technische Werkzeuge}
+            Alle Arbeitsblätter waren als ein interaktives Jupyter Notebook gestaltet. Jupyter Notebook eignet sich für das Konzept eines selbstgesteuerten Worshops besonders gut, da die Schüler in ihrem eigenen Tempo, mit modernen Hilfsmitteln (Computer, Internet usw.) und unmittelbarem Feedback lernen können. Um den Schülern den Grauwert nahezulegen wurden sie auf Wikipedia verwiesen. Mit dem Artikel sollten sie sich selbst Informationen beschaffen.
+        \subsection{DP6: Innere Differenzierung}
+            AB1 hat die Grundlagen des Themas gelegt. Jeder Schüler soll das Blatt in seinem Tempo bearbeiten. Hier gab es noch keine Zusatzaufgaben.
+            Erst ab Blatt 2, bei dem die Grundlagen schon zum Teil Anwendung gefunden haben, gab es die Möglichgkeit für schnelle Schüler sich als Zusatzaufgabe vertieft in die numerische Formulierung des mathematischen Problems zu vertiefen.
+            An dieser Form der Differenzierung könnte man kritisieren, dass mathematisch begabte Schüler sich möglicherweise von den leichteren Aufgaben gelangweilt fühlen könnten. Je nach Motivation der begabeten Schüler ist es außerdem möglich, dass sie die zusätzlichen Aufgaben nicht machen möchten.
+            Ab AB4 können die Schüler frei wählen, ob sie die gelernten Methoden auf die Schrifterkennung oder die Gesichtserkennung anwenden wollen, was ebenfalls eine Form der inneren Differenzierung darstellt, da die Schüler hier je nach Interesse und Vorwissen sich für eine der beiden Möglichkeiten entscheiden können.
+            Die Tipps auf den Arbeitsblättern sind als Hilfestellung für schwächere Schüler ebenfalls ein Mittel der inneren Differenzierung.
+        \subsection{DP7: Modellierungskreislauf als metakognitives Element}
+
+            Wie bereits ausgeführt, liegt dem Workshop der Modellierungskreislauf zugrunde. Dieser wird im Rahmen des Bildklassifizierungsworksops mehrfach durchlaufen. Bei ersten Mal Es geht darum, das reale Problem - wie ein Computer zwischen roten und grünen Ampeln unterscheidet - so zu vereinfachen, dass eine mathematische Formulierung und im Anschluss auch eine mathematische Lösung möglich ist. Die Vereinfachung besteht darin die Ampel auf zwei Punkte zu reduzieren. Im Modell werden die Farbwerte der  beiden Punkte untersucht. Die Werte der Punkte hängen von ihrem RGB Wert ab.
+            Dieser Kreislauf wird nicht vollständig durchlaufen. Das Problem wird weiter vereinfacht: Statt RGB Werten, die Farben ausgeben, wird sich nun auf den Grauwert konzentriert. Er kann in nur einem staat drei Werten Informationen über die Farbe geangeben. Für diese Vereinfachung kann dann ein mathematisches Modell aufgestellt werden in dem in zwei Dimensionen zwischen Farben unterschieden werden kann. Die mathematische Lösung des Problems eine rote von einer grünen Ampel zu unterscheiden besteht nun darin eine geeignete Trenngerade zu finden.
+            Der Kreislauf wird analog für eine Ampel mit drei Lichtern und die Bilderkennung durchlaufen.
+            Die Schüler werden stets in kleinen Schritten durch den Kreislauf geführt. Eine Gefahr besteht darin, dass die Schüler zwar die einzelnen Schritte verstehen, gleichzeitig den gesamten Kreislaufes aus den Augen verlieren.
+
+
+
+
+
+
+% \chapter{Bildklassifizierung}
+
+%     \section{Konzept und Einordnung}
+%     Gymnasien haben (der Theorie nach) die Aufgabe, Schüler insofern auszubilden, dass sie die Fähigkeit besitzen, eine Universität besuchen zu können.
+%     Gerade hierfür ist es wichtig, Mathematik nicht nur als Aneinanderreihung von Formeln oder (im Schlimmsten Fall) auswendig gelernten Sätzen zu verstehen, sondern als das, was es ist:
+%     Ein Werkzeug, oder eine hochpräzise Sprache, um Probleme zu lösen, oder gar erst präzise formulieren zu können.
+%     Der Fokus sollte also nicht nur auf dem Ansammeln verschiedener Werkzeuge liegen, sondern sie sollte auch sinnvoll eingesetzt werden können.
+%     Aufgrund der zunehmenden Nutzung von KI in sämtlichen (technischen) Bereichen, ist daher die Anwendung der gelernte mathematischen Inhalte auf KI-bezogene Themengebiete naheliegend.
+%     In diesem Workshop schauen wir uns den Teilbereich Maschinelles Lernen (supervised learning) an, und versuchen simple, aber realistische Probleme mithilfe mathematischer Methoden zu lösen.
+
+%     \section{Workshop: Bildklassifizierung}
+%         In diesem Workshop geht es darum in kleinen Schritten zu verstehen, wie  man anhand maschinellen Lernens  realisieren kann, bestimmte Klassen von Objekten bzw. Bilder zu unterscheiden.
+%         \subsection{Blatt1}
+%             Als Einstiegsbeispiel wird eine zweifarbige Ampel verwendet, die entweder grün oder rot leuchten kann. In diesem Zuge wird die digitale Farbgebung (RGB) eingeführt, um die Farbgebung der Ampel in Zahlen zu übersetzen.
+%             Um das Problem im Anschluss noch weiter zu reduzieren, wird die Ampel  als ein Schwarz-Weiß-Bild dargestellt, in dem lediglich der ebenfalls neu eingeführte Grauwert eine Rolle spielen, sodass die Ampel als ein zwei dimensionaler Vektor $\vec{x}=[x_1, x_2] \in \mathbb{R}_+^2$ modelliert werden kann.
+%             Der $x_1$-Wert gibt den Grauwert der oberen Hälfte der Ampel und der $x_2$-Wert den Grauwert der unteren Hälfte der Ampel an.
+%             Das Grundproblem, welches nun gelöst werden muss, besteht darin, wie man nun die Werte von $x_1$ und $x_2$ so unterteilen bzw. klassifizieren kann, dass eine Unterscheidung zwischen Rot und Grün (bzw. den entsprechenden Grauwerten) möglich ist.
+%             Hierzu wird die Idee der linearen Klassifikation eingeführt, bei der eine Gerade als Entscheidungsgrenze zwischen den beiden Klassen (Grauwert rotes Licht, Grauwert grünes Licht) dient.
+%             Zunächst wird für gegebene Geraden diskutiert, welche Gerade die bestmögliche Trennung der beiden Klassen ermöglicht, um im Anschluss dann präziser zu formulieren, was eine Trenngerade für Eigenschaften haben muss.
+%         \subsection{Blatt 2}
+%             Nach der intuitiven Formulierung, was die beste Trenngerade ausmacht, soll das Problem nun mathematisch präzise formuliert werden, um es schließlich mit einem Algorithmus lösen zu können.
+%             Hierzu wird die vektorielle Normalenform einer Gerade eingeführt/wiederholt, sowie die vektorielle Abstandsberechnung um schließlich das Aufstellen der Trenngerade als Lösung eines doppeltes Optimierungsproblems zu formulieren, bei dem der der minimale Abstand der Punkte eines Datensatzes zu einer Gerade maximiert werden soll.
+%         \subsection{Blatt 3}
+%             Nachdem das Grundproblem und eine erste mathematische Formulierung in Blatt 1 und Blatt 2 erarbeitet wurden, wird die Methode nun ins dreidimensionale erweitert, in dem die Ampel nun auch eine Gelbphase besitzt, sodass die Bilder nun als dreidimensionale Vektoren $\vec{x}=[x_1, x_2, x_3] \in \mathbb{R}_+^3$ modelliert werden können.
+%             Es reicht nun nichtmehr, die Klassen durch eine Gerade zu trennen, sondern es muss eine Ebene als Entscheidungsgrenze gefunden werden, um die drei Klassen (Rot, Gelb, Grün) voneinander zu unterscheiden.
+%             Dazu wird anknüpfend die Normalenform der Ebene eingeführt/wiederholt, und damit das analoge doppelte Optimierungsproblem im dreidimensionalem Raum formuliert, um die optimale Trennebene zu finden.
+%         \section{Blatt 4}
+%             Um die Bildklassifizierung nicht nur auf Farberkennung zu reduzieren, wird auf diesem Blatt noch ein weiterer Aspekt besprochen, die Auflösung.
+%             Hier wird der Einfluss der Länge eines Vektors diskutiert, und wie es die Qualität und Berechnungszeit beeinflusst.
+%         \subsection{Blatt 5}
+%             Mit diesen Grundlagen können sich die Schüler nun aussuchen, ob die die gelernten Methoden der Bildklassifizierung einmal auf Schrifterkennung oder auf die Gesichtserkennung anwenden wollen.
+
+
+
+%     \section{Kompetenzen}
+%         \subsection{Inhaltliche Kompetenzen}
+%             Die Schüler sollten bestenfalls bereits die Grundlagen von Vektoren, Geraden und Ebenen gelernt haben, sowie das Rechnen mit Vektoren verstanden haben.
+%             Mithilfe dieser Grundlagen lernen die Schüler die Möglichkeit eine Gerade in der Normalenform zu schreiben, was später den Weg zur Normalenform der Ebene erleichtert. In der Schule hat man letztere vielleicht eher gesehen, als die Normalenform der Gerade.
+%             Zudem wiederholen oder lernen die Schüler wie man mithilfe dieser Darstellung auf geschicktem (später für die Numreik sinnnvollem) Weg Abstände von Punkten zu Geraden oder Ebenen berechnet. \\
+
+%         \minisec{Bildungsplan}
+%             Da die Unterrichtseinheit das Arbeiten mit Vektoren, Ebenen, und vektoriellem Abstand beinhaltet, sollte diese erst in der 11. Klasse durchgeführt werden, da die Schüler hier bereits mit diesen Themen vertraut sind, und sie somit nicht mehr neu eingeführt werden müssen, sondern direkt auf das Problem der Bildklassifizierung angewendet werden können.
+%             Ohne die Erweiterung in den dreidimensionalen Raum könnte die Unterrichtseinheit auch bereits in der 10. Klasse durchgeführt werden, da man ohne die Erweiterung nicht auf eine Trennebene sondern lediglich eine Trenngrade angewiesen ist.
+%         \subsection{Prozessbezogene Kompetenzen}
+%        Ein essenzieller Bestandteil der Naturwissenschaft ist der Prozess des Modellierungskreislaufs. Jedes physikalische Modell entsteht aus einer Vereinfachung eines realen Problems, welches dann mathematisch formuliert, und in diesem Formalismus (näherungsweise) gelöst werden kann.
+%        In der Schule wird leider selten die Möglichkeit geboten, den vollständigen Kreislauf durchzugehen. Sehr häufig wird bereits das mathematische Modell vorgegeben, welches dann \glqq{}nur\grqq{} gelöst und interpretiert werden muss.
+%        Auch hier kann (alleine aus zeitlichen Gründen) der Kreislauf nicht in aller Vollständigkeit entdeckend durchlaufen werden, allerdings leitet der Workshop die Schüler so durch den Modellierungskreislauf, dass sie zumindest jedem Schritt mindestens einmal begegnen. \\
+%         \minisec{Reales Problem}
+%             Das reale Problem, die Bildklassifizierung, wird vorgegeben, die Schüler müssen sich aber  selbst das geeignete Zusatzinformationen beschaffen, um die anschließende Vereinfachung des realen Problems zu verstehen bzw. nachvollziehen zu können.
+%         \minisec{Vereinfachung}
+%             Der Weg der Vereinfachung ist hier ebenfalls vorgegeben, diesen müssen die Schüler nicht selbstständig entdecken, allerdings nachvollziehen. %Dafür war es notwendig, dass sie zunächst das weniger vereinfachte Problem verstehen, in dem die Ampel mithilfe von RGB-Farben dargestellt wird, um dann die Vereinfachung zu verstehen, in der die Ampel nur noch als Schwarz-Weiß-Bild dargestellt wird.
+%             Dadurch, dass das reale Problem zunächst mithilfe von RGB-Farben mit je drei Werten beschrieben wurde, können die Schüler besser nachvollziehen, warum man das Problem noch einmal weiter auf den Grauwert reduzieren kann, um es schließlich als zweidimensionales Problem zu formulieren.
+%             \minisec{Mathemtisches Modell}
+%             Auch das mathematische Modell der vektoriellen Beschreibung des Problems wird vorgegeben, allerdings können die Schüler durch das Schrittweise vorgehen den Übergang vom inhaltlichen Problem zum mathematischen Modell nachvollziehen, und verstehen, wie die einzelnen Schritte des Modells mit den inhaltlichen Aspekten des Problems zusammenhängen. Im zweiten Schritt können die gelernten Methoden auf eine höhere dimension übertragen werden.
+%         \minisec{Mathematische Lösung}
+%             Die mathematische Lösung des Problems der Bildklassifizierung wird schrittweise erarbeitet, in dem die Schüler durchs argumentieren und diskutieren die Eigenschaften einer Trenngerade bzw. Trennebene herausarbeiten, um schließlich die mathematische Formulierung des Problems als doppeltes Optimierungsproblem zu verstehen, und damit die mathematische Lösung zu formulieren. Auch das mathematische Lösungsverfahren des erweiterten höher dimensionalen Optimierungproblems kann analog zum zweidimensionalen Problem erlernt werden.
+%         \minisec{Interpretation}
+%             Die Interpretation wird durch vorgegebene Lösungen geübt, in dem die  Schüler durch die Vorgabe bestimmter Trenngeraden-, oder Ebenen einen Datensatz richtig klassifizieren müssen.\\
+%             \par
+%        Zusätzlich lernen die Schüler durch die immer wieder auftauchenden Zwischenfragen und abschließenden Diskussionen begründete Hypothesenbildung.
+%        Das bedeutet, sie lernen sich begründet Gedanken zu einer Formulierung, einer Vereinfachung oder einer Begründung zu machen, und müssen diese eigens begründen.
+%        Im Anschluss haben sie zusätzlich die Möglichkeit ihre eigenen (aber auch andere) Hypothesen auf ihre Gültigkeit zu prüfen, sodass nicht nur die Hypothesenbildung sondern gleichzeitig auch die Hypothesenprüfung geübt wird.
+
+%     \section{Design Prinzipien}
+%         \subsection{DP2: Externe und interne mathematische Bezüge}
+%             Externe mathematische Bezüge entstehen in diesem Modul durch die mathematische Modellbildung, also durch die Übersetzung des (vereinfachten) realen Problems der Bilderkennung in eine geeignete mathematische Darstellung.
+%             In AB1, Ab2 und AB3 werden visuelle Informationen (Farben bzw. Grauwerte) durch eine Reduktion auf Zahlenwerte mithilfe von Vektoren dargestellt.
+%             Interne mathematische Bezüge entstehen bei der Entwicklung einer mathematischen Lösung des übersetzten realen Problems, beim Aufstellen von Trenngeraden oder Ebenen, sowie der Abstandsbestimmung mithilfe von Vektoren.
+%             Auch das Konzept der Optimierung, welches die Schüler vielleicht eher aus der Analysis kennen stellt einen internen mathematischen  Bezug dar.
+%         \subsection{DP3: Geeignete technische Werkzeuge}
+%             Alle Arbeitsblätter waren als ein interaktives Jupyter Notebook gestaltet.
+%         \subsection{DP6: Innere Differenzierung}
+%             AB1 hat die Grundlagen des Themas gelegt. Jeder Schüler ann das Blatt in seinem Tempo bearbeiten, allerdings war dieses noch nicht gezielt darauf ausgelegt, verschiedene Schwiereigkeitsgrade zu ermöglichen.
+%             Erst ab Blatt 2, bei dem die Grundlagen schon zum Teil Anwendung gefunden haben, gab es die Möglicgkeit für schnelle Schüler sich als Zusatzaufgabe vertieft in die numerische Formulierung des mathematischen Problems zu vertiefen.
+%             Ab AB4 können die Schüler frei wählen, ob sie die gelernten Methoden auf die Schrifterkennung oder die Gesichtserkennung anwenden wollen, was ebenfalls eine Form der inneren Differenzierung darstellt, da die Schüler hier je nach Interesse und Vorwissen sich für eine der beiden Möglichkeiten entscheiden können.
+%         \subsection{Modellierungskreislauf als metakognitives Element}
+%             Wie bereits ausgeführt, liegt dem Workshop der Modellierungskreislauf zugrunde, da es im Groben darum geht, das reale Problem der Bilderkennung so zu vereinfachen, dass eine mathematische Formulierung und im Anschluss auch eine mathematische Lösung möglich ist.
+%             Die Schüler werden in kleinen Schritten durch den kreislauf (mehfach) geführt, allerdings kann es sein, dass die Schüler zwar die einzelnen Schritte an sich verstehen, vielleicht aber das Big Picture des gesamten Kreislaufes aus den Augen verlieren.
+
+%     \section{Lob und Kritik}
+%         Der Workshop ist sehr gut, um den Schülern auf sehr praxisnahe Weise naturwissenschaftliches Arbeiten nachhaltig zu vermitteln.
+%         Dadurch, dass nicht nur ein erklärender Frontalunterricht stattfindet, sondern die Schüler durch interaktive Aufgaben sich ein Themengebiet mehr oder weniger selber erarbeiten, fördert das nicht nur das inhaltliche sondern auch das methodische Verständnis.
+%         Die zusätzlichen Aufgaben, die nach Vermutungen, vorläufigen Formulierungen eines Sachverhalts oder einer konkreten Hypothese fragen, sind ebenfalls in dem Sinne gut gestaltete, dass sie das eigenständige Denken und nicht nur reproduzieren des Schülers fordern.
+%         Zudem fällt es positiv auf, dass nach eingabe nicht (immer) direkt eine Musterlösung oder eine Richtig/Falsch Meldung erscheint.
+%         Das senkt aus Schülersicht die Hemmschwelle eine Vermutung zu äußern, da diese erst einmal wertungsfrei bleibt, und der Schüler in diesem Fall meist die Möglichkeit hat, im Verlauf des Workshops selber rauzufinden, ob er mit seiner Vermutung richtig lag, oder nicht.
+
+%         \par
+
+%         Ein kleiner Verbesserungsvorschlag ist die Farbgebung der Vektoren auf AB3 bei der Erklärung. Hier haben die Vektoren andere Farben, als in der anschließenden Erklärung. Für eine bessere Übersicht könnte man dies noch angleichen.
+
 
 
